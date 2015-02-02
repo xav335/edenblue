@@ -233,6 +233,9 @@ function alo_em_pubblic_form ()
             
 
 
+
+
+
 <div class=" row  outer-padding no-bg">
 	<div class="uxb-col large-12 columns   ">
 		<div class="wpb_wrapper">
@@ -241,71 +244,137 @@ function alo_em_pubblic_form ()
 	</div> 
 </div>
 <div class="css_guestbook_position"><div class="css_guestbook_font_color"><!-- Message text chars left counter -->
+
 <script type="text/javascript">
+
 <!--
+
 function gbmsgLen()
+
 {
+
 maxLen="";
+
 var text=document.forms[0].gbmsg.value;
+
 if(text.length>maxLen)
+
     {
+
       document.forms[0].gbmsg.value = text.substring(0,maxLen);
+
       document.forms[0].counter.value = "0";
+
     }
+
 else
+
     {
+
     var length = maxLen-text.length;
+
     document.forms[0].counter.value = length;
+
     }
+
 }
+
 -->
+
 </script><div class="css_form_embedded">
+
 				<!-- define the space on top of the form -->
+
 				<div class="css_form_textfieldspace"></div>
 
+
+
 				<!-- error & succes messages -->
+
 				<div class="css_form_errormessage"></div>
+
 				<div class="css_form_errormessage"></div>
+
 				<div class="css_form_errormessage"></div>
+
 				<div class="css_form_errormessage"></div>
+
 				<div class="css_form_errormessage"></div>
+
 				<div class="css_form_errormessage"></div>
+
 				<div class="css_form_successmessage"></div>
+
 				<br><form action="http://www.edenblue.fr/eden-blue-cezac-construction-piscine-a-debordement-piscine-naturelle-couloir-de-nage-piscine-beton-3" method="post">
+
 				<!-- name field -->
+
 				<div class="css_form_textfieldspace">
+
 				<input class="css_form_namefield" type="text" name="gbname" value="" maxlength="50"><b class="css_form_text">&nbsp;Nom *</b></div>
 
+
+
 				<!-- email field -->
+
 				<div class="css_form_textfieldspace">
+
 				<input class="css_form_emailfield" type="text" name="gbemail" value=""><b class="css_form_text">&nbsp;Email </b></div>
+
 				
+
 				<!-- url field -->
+
 				<div class="css_form_textfieldspace">
+
 				<input class="css_form_urlfield" type="text" name="gburl" value=""><b class="css_form_text">&nbsp;Site internet </b></div>
+
 				
+
 				<!-- message field -->
+
 				<div class="css_form_textfieldspace">
+
 				
+
 				
+
 				<textarea class="css_form_messagefield" name="gbmsg" rows="0" cols="0"></textarea><b class="css_form_text">&nbsp;Texte *</b></div>
 
+
+
 				<!-- require text and the requirement char -->
+
 				<div style="text-align:left;"><b class="css_form_text">* Obligatoire</b></div>
+
 				<br><!-- visual captcha if selected --><div class="css_form_antispamtext"><b>Mesures Antispam</b><br>Veuillez svp taper la combinaison de chiffres et de lettres telle que vous la lisez, dans la boite de saisie avant de poster dans le Livre d'Or.</div>
+
 				<div class="css_form_antispamcontent_position">
+
 				<img class="css_form_antispamcontent" src="../wp-content/plugins/dmsguestbook/captcha/captcha-seed=1422473534&var_captcha_color=000000.php.html" alt="captcha"></div>
+
 				<div class="css_form_antispamcontent_position">
+
 				<input class="css_form_antispam_inputfield" type="text" name="securecode"></div>
+
 				
+
 				<!-- submit button -->
+
 				<div class="css_form_submit_position"><input class="css_form_submit" type="submit" value="Poster"></div>
+
 				<input type="hidden" name="newentry" value="1"><input type="hidden" name="Itemid" value=""><input type="hidden" name="antispam_hash_key" value="57f5469d7d28deeeb3c7410009ab1546"></form>
+
 				<!-- define space after the submit button -->
+
 				<p style="padding:10px 0px 0px 0px;"></p>
+
 				</div>
+
 				<!-- define space between form and navigation -->
+
 				<div style="padding:30px 0px 0px 0px;"></div>
+
 				<div class="css_navigation_totalcount">(0)</div><div class="css_navigation_overview"></div></div></div>
             
                         
@@ -344,27 +413,7 @@ else
 		</div>                                    </div>
                                     
                                                                         
-                                    <div class="uxb-col large-3 columns less-padding">
-                                        <div class="footer-widget-item"><h5>Newsletter</h5><div id='alo_em_widget_loading' class='alo_em_widget_loading' style='display:none;'><img src='../wp-content/plugins/alo-easymail/images/wpspin_light.gif' alt='' style='vertical-align:middle' /> envoi en cours...</div>
-<div id='alo_easymail_widget_feedback'></div>
-<form name='alo_easymail_widget_form' id='alo_easymail_widget_form' class='alo_easymail_widget_form alo_easymail_widget_form_public' method='post' action='' onsubmit='alo_em_pubblic_form();return false;'>
-<table class='alo_easymail_form_table'><tbody>
-  <tr>
-    <td><label for='opt_name'>Nom</label></td>    <td><input type='text' name='alo_em_opt_name' value='' id='opt_name' maxlength='50' class='input-text' /></td>
-  </tr>
-  <tr>
-    <td><label for='opt_email'>Courriel </label></td>
-    <td><input type='text' name='alo_em_opt_email' value='' id='opt_email' maxlength='50' class='input-text' /></td>
-  </tr>
-</tbody></table>
-<input type='submit' name='submit' value='S&#39;abonner à la Lettre électronique' class='input-submit' />
-</form>
-</div>                                    </div>
                                     
-                                                                        
-                                    <div class="uxb-col large-3 columns less-padding">
-                                        <div class="footer-widget-item"><h5>Témoignages</h5>			<div class="textwidget"><a href="../index-page_id=282.html"><img src="../wp-content/uploads/2014/03/www.edenblue.fr_livre.jpg"/></a></div>
-		</div>                                    </div>
                                     
                                                                 
                         </div>

@@ -111,6 +111,7 @@ function alo_em_pubblic_form ()
 <link rel="canonical" href="index.html" />
 <!-- /all in one seo pack -->
     <link rel='stylesheet' id='js_composer_front-css'  href='../wp-content/plugins/js_composer/assets/css/js_composer_front-ver=4.2.2.css' type='text/css' media='all' />
+<script src="../js/jquery.js"></script>
 </head>
 
     <body id="theme-body" class="page page-id-430 page-template-default wpb-js-composer js-comp-ver-4.2.2 vc_responsive">
@@ -236,7 +237,10 @@ function alo_em_pubblic_form ()
 			
 	<div class="wpb_text_column wpb_content_element ">
 		<div class="wpb_wrapper">
-			<h3><span style="color: #ff0000;"><strong>Suite &agrave; un probl&egrave;me technique, merci de nous contacter uniquement sur l&rsquo;adresse mail:&nbsp; edenblue33@gmail.com&nbsp; ou&nbsp; par t&eacute;l&eacute;phone&nbsp; au&nbsp; 0.983.218.132&nbsp; / 06.50.21.54.49</strong></span></h3>
+			<h3><span style="color: #ff0000;">
+					<strong>Vous pouvez égalelement nous contacter 
+					 sur l&rsquo;adresse mail:&nbsp; edenblue33@gmail.com&nbsp; ou&nbsp; par t&eacute;l&eacute;phone&nbsp; au&nbsp; 
+					 0.983.218.132&nbsp; / 06.50.21.54.49</strong></span></h3>
 
 		</div> 
 	</div> 
@@ -245,30 +249,101 @@ function alo_em_pubblic_form ()
 </div><div class=" row  outer-padding no-bg">
 	<div class="uxb-col large-12 columns   ">
 		<div class="wpb_wrapper">
-			<h1 class="light  h-center  has-line  "> Etre rappel&eacute; par un conseiller</h1>
+			<h1 class="light  h-center  has-line  "> Demande de devis / Etre rappel&eacute; par un conseiller</h1>
 		</div> 
 	</div> 
 </div><div class=" row ">
 	<div class="uxb-col large-12 columns   ">
 		<div class="wpb_wrapper">
 			<div class="wpcf7" id="wpcf7-f432-p430-o1" lang="fr-FR" dir="ltr">
-<div class="screen-reader-response"></div>
-<form name="" action="/construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-4#wpcf7-f432-p430-o1" method="post" class="wpcf7-form" novalidate="novalidate">
-<div style="display: none;">
-<input type="hidden" name="_wpcf7" value="432"><input type="hidden" name="_wpcf7_version" value="3.9.3"><input type="hidden" name="_wpcf7_locale" value="fr_FR"><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f432-p430-o1"><input type="hidden" name="_wpnonce" value="6d298b5612"></div>
-<p>Votre nom <span style="color:#9bc9c9;">*</span><br><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </p>
-<p>Votre t&eacute;l&eacute;phone <span style="color:#9bc9c9;">*</span><br><span class="wpcf7-form-control-wrap tel-181"><input type="tel" name="tel-181" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false"></span></p>
-<p>Objet<br><span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"></textarea></span> </p>
-<p>Choisir votre tranche horaire<br><span class="wpcf7-form-control-wrap menu-532"><select name="menu-532" class="wpcf7-form-control wpcf7-select" aria-invalid="false"><option value="">---</option><option value="matin">matin</option><option value="apr&egrave;s-midi">apr&egrave;s-midi</option><option value="9h-10h">9h-10h</option><option value="10h-11h">10h-11h</option><option value="11h-12h">11h-12h</option><option value="12h-14h">12h-14h</option><option value="14h-15h">14h-15h</option><option value="15h-16h">15h-16h</option><option value="16h-17h">16h-17h</option><option value="17h-18h">17h-18h</option><option value="18h-19h">18h-19h</option><option value="19h-20h">19h-20h</option></select></span> </p>
-<p>Veuillez inscrire le code dans le champ ci-dessous<br><span class="wpcf7-form-control-wrap captcha-863"><input type="text" name="captcha-863" value="" size="40" class="wpcf7-form-control wpcf7-captchar" aria-invalid="false"></span></p>
-<p style="color:#9bc9c9;">Les champs marqu&eacute;s d'une * sont obligatoires</p>
-<p><br></p>
-<p><input type="submit" value="Envoyer" class="wpcf7-form-control wpcf7-submit"></p>
-<div class="wpcf7-response-output wpcf7-display-none"></div></form></div>
+				<div class="screen-reader-response"></div>
+					
+					<form id="formulaire"  class="wpcf7-form">
+						<div id="resultat">
+
+    					</div>
+						<p>Votre nom <span style="color:#9bc9c9;">*</span><br>
+							<span class="wpcf7-form-control-wrap your-name">
+							<input type="text" name="name" id="name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" required="true">
+							</span> 
+						</p>
+						<p>Votre t&eacute;l&eacute;phone (indiquez votre poste si necessaire)<span style="color:#9bc9c9;">*</span><br>
+							<span class="wpcf7-form-control-wrap tel-181">
+							<input type="text" name="tel" id="tel"value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" required="true" aria-invalid="false">
+							</span>
+						</p>
+						<p>Votre email <span style="color:#9bc9c9;"></span><br>
+							<span class="wpcf7-form-control-wrap tel-181">
+							<input type="email" name="email" id="email"value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" required="true" aria-invalid="false">
+							</span>
+						</p>
+						<p>Votre message<br><span class="wpcf7-form-control-wrap your-message">
+							<textarea name="message" id="message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"></textarea>
+						</span> </p>
+						<p>Choisir votre tranche horaire<br>
+							<span class="wpcf7-form-control-wrap ">
+								<select name="horaire" id="horaire" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+									<option value="">---</option><option value="matin">matin</option><option value="apr&egrave;s-midi">apr&egrave;s-midi</option><option value="9h-10h">9h-10h</option><option value="10h-11h">10h-11h</option><option value="11h-12h">11h-12h</option><option value="12h-14h">12h-14h</option><option value="14h-15h">14h-15h</option><option value="15h-16h">15h-16h</option><option value="16h-17h">16h-17h</option><option value="17h-18h">17h-18h</option><option value="18h-19h">18h-19h</option><option value="19h-20h">19h-20h</option>
+								</select>
+							</span>
+						</p>
+						<p>Veuillez indiquez votre code postal<br>
+							<span class="wpcf7-form-control-wrap">
+								<input type="number" name="cp" id="cp" value="" size="40" class="wpcf7-form-control" required="true"  >
+							</span>
+						</p>
+						<p style="color:#9bc9c9;">Les champs marqu&eacute;s d'une * sont obligatoires</p>
+						<p>
+						<div id="resultat2">
+
+    					</div>
+						<br></p>
+						
+						<p><input type="submit" value="Envoyer" class="wpcf7-form-control"></p>
+						
+						<div class="wpcf7-response-output wpcf7-display-none"></div>
+					</form>
+			</div>
 		</div> 
 	</div> 
 </div>
+<script type="text/javascript">
 
+	$(document).on('submit','#formulaire',function(e) {
+	  e.preventDefault();
+	  data = $(this).serializeArray();
+
+	  data.push({
+	   		name: 'action',
+	    	value: 'sendMail'
+	  	})
+
+	  console.log(data);
+
+	    /* I put the above code for check data before send to ajax*/
+	    $.ajax({
+		        url: '/ajax/contact.php',
+		        type: 'post',
+		        data: data,
+		        success: function (data) {
+		            $("#resultat").html("<h3>Merci pour votre message - Nous allons y donner suite très vite</h3>");
+		            $("#resultat2").html("<h3>Merci pour votre message - Nous allons y donner suite très vite</h3>");
+		        	$("#name").val("");
+		        	$("#email").val("");
+		        	$("#tel").val("");
+		        	$("#cp").val("");
+		           	$("#message").val("");
+		           	$('#horaire option:eq(0)').prop('selected', true);
+		        },
+		        error: function() {
+		        	 $("#resultat").html("<h3>Une erreur s'est produite !</h3>");
+		        	 $("#resultat2").html("<h3>Une erreur s'est produite !</h3>");
+		        }
+		   	});
+	return false;
+	})
+
+</script>
             
                         
         </div>
@@ -306,27 +381,7 @@ function alo_em_pubblic_form ()
 		</div>                                    </div>
                                     
                                                                         
-                                    <div class="uxb-col large-3 columns less-padding">
-                                        <div class="footer-widget-item"><h5>Newsletter</h5><div id='alo_em_widget_loading' class='alo_em_widget_loading' style='display:none;'><img src='../wp-content/plugins/alo-easymail/images/wpspin_light.gif' alt='' style='vertical-align:middle' /> envoi en cours...</div>
-<div id='alo_easymail_widget_feedback'></div>
-<form name='alo_easymail_widget_form' id='alo_easymail_widget_form' class='alo_easymail_widget_form alo_easymail_widget_form_public' method='post' action='' onsubmit='alo_em_pubblic_form();return false;'>
-<table class='alo_easymail_form_table'><tbody>
-  <tr>
-    <td><label for='opt_name'>Nom</label></td>    <td><input type='text' name='alo_em_opt_name' value='' id='opt_name' maxlength='50' class='input-text' /></td>
-  </tr>
-  <tr>
-    <td><label for='opt_email'>Courriel </label></td>
-    <td><input type='text' name='alo_em_opt_email' value='' id='opt_email' maxlength='50' class='input-text' /></td>
-  </tr>
-</tbody></table>
-<input type='submit' name='submit' value='S&#39;abonner à la Lettre électronique' class='input-submit' />
-</form>
-</div>                                    </div>
                                     
-                                                                        
-                                    <div class="uxb-col large-3 columns less-padding">
-                                        <div class="footer-widget-item"><h5>Témoignages</h5>			<div class="textwidget"><a href="../index-page_id=282.html"><img src="../wp-content/uploads/2014/03/www.edenblue.fr_livre.jpg"/></a></div>
-		</div>                                    </div>
                                     
                                                                 
                         </div>
