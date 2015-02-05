@@ -11,15 +11,15 @@ error_log(date("Y-m-d H:i:s") ." : ". $_POST['cp'] ."\n", 3, "../log/spy.log");
 
 if ($_POST["action"] == "sendMail") {
 
-	//$_to = "edenblue33@gmail.com";
-	$_to = "fjavi.gonzalez@gmail.com";
+	$_to = "edenblue33@gmail.com";
+	//$_to = "fjavi.gonzalez@gmail.com";
 	$sujet = "Eden Blue - Contact Site";
 	//echo "Envoi du message à " . $_to . "<br>";
 
-	$entete = "From:EdenBlue <edenblue33@gmail.com.fr>\n";
+	$entete = "From:EdenBlue <edenblue33@gmail.com>\n";
 	$entete .= "MIME-version: 1.0\n";
 	$entete .= "Content-type: text/html; charset= iso-8859-1\n";
-	$entete .= "Bcc: xav335@hotmail.com\n";
+	$entete .= "Bcc: fjavi.gonzalez@gmail.com, xav335@hotmail.com\n";
 
 	$corps = "";
 	$corps .= "Bonjour,<br>";
