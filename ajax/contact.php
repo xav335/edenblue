@@ -9,15 +9,16 @@ error_log ( date ( "Y-m-d H:i:s" ) . " : " . $_POST ['cp'] . "\n", 3, "../log/sp
 
 if ($_POST ["action"] == "sendMail") {
 	
-	$_to = "edenblue33@gmail.com";
-	// $_to = "fjavi.gonzalez@gmail.com";
-	// $_to = "web-MprMi1@mail-tester.com";
+	//$_to = "edenblue33@gmail.com";
+	//$_to = "fjavi.gonzalez@gmail.com";
+	$_to = "info@edenblue.fr";
+	//$_to = "web-IYAFtN@mail-tester.com";
 	$sujet = "Eden Blue - Contact Site";
 	
 	$entete = "From:EdenBlue <contact@edenblue.fr>\n";
 	$entete .= "MIME-version: 1.0\n";
 	$entete .= "Content-type: text/plain; charset= iso-8859-1\n";
-	$entete .= "Bcc: fjavi.gonzalez@gmail.com\n";
+	$entete .= "Bcc: edenblue33@gmail.com,xav335@hotmail.com,fjavi.gonzalez@gmail.com\n";
 	
 	$corps = "";
 	$corps .= "Bonjour,\n";
@@ -25,7 +26,7 @@ if ($_POST ["action"] == "sendMail") {
 	$corps .= "Tel : " . $_POST ["tel"] . "\n";
 	$corps .= "Code postal : " . $_POST ["cp"] . "\n";
 	$corps .= "Horaire souhaité de rappel: " . $_POST ["horaire"] . "\n";
-	$corps .= "<b>Message :\n";
+	$corps .= "Message :\n";
 	$corps .= $_POST ["message"] . "\n";
 	$corps = utf8_decode ( $corps );
 	

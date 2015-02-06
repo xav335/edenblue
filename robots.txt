@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /wp-admin/
 
-Sitemap: http://www.edenblue.fr/seo/sitemap.xml.gz
+Sitemap: http://www.edenblue.fr/sitemap.xml
