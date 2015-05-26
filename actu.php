@@ -418,8 +418,9 @@ body {
 							commerciale</a></li>
 					<li id="menu-item-452"
 						class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a
-						href="actu.php">Actus</a>
+						href="/actu.php">Actus</a>
 						</li>
+ 
 					<li id="menu-item-452"
 						class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a
 						href="/construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-4/index.html">Contact</a>
