@@ -352,8 +352,7 @@ body {
 			<div class="menu-navigation-container">
 				<ul id="root-menu" class="sf-menu">
 					<li id="menu-item-40"
-						class="menu-item menu-item-type-post_type menu-item-object-page  page_item page-item-29 current_page_item menu-item-40"><a
-						href="index.php">Accueil</a></li>
+						class="menu-item menu-item-type-post_type menu-item-object-page  page_item page-item-29 current_page_item menu-item-40"><a href="index.php">Accueil</a></li>
 					<li id="menu-item-161"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161"><a
 						href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-3/index.html">Galerie</a>
@@ -381,8 +380,7 @@ body {
 						</ul></li>
 					<li id="menu-item-120"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-120"><a
-						href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-2/index.html">Aménagements
-							extérieurs</a>
+						href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-2/index.html">Aménagements extérieurs</a>
 						<ul class="sub-menu">
 							<li id="menu-item-274"
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-274"><a
@@ -416,8 +414,7 @@ body {
 						</ul></li>
 					<li id="menu-item-72"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-72"><a
-						href="piscine-a-debordement-bordeaux-gironde-dordogne-cezac-eden-blue-construction-piscine-2/index.html">Techniques
-							de construction</a>
+						href="piscine-a-debordement-bordeaux-gironde-dordogne-cezac-eden-blue-construction-piscine-2/index.html">Techniques	de construction</a>
 						<ul class="sub-menu">
 							<li id="menu-item-230"
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-230"><a
@@ -605,7 +602,6 @@ body {
             						<div class=" large-12 columns   ">
 								        <hr class="thin dashed  divider">
 						              </div>	
-            										  
 						         <?php else: ?>
 						              <div class="wpb_wrapper uxb-col large-12 columns ">
 							                <?php if(!empty($value['image1'])):?>

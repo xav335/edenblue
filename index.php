@@ -5,7 +5,7 @@ require 'admin/classes/utils.php';
 session_start();
 $news = new News();
 $result = $news->newsValidGet();
-//print_r($result);
+//print_r($result);exit;
 if (empty($result)) {
 	$titre=  		'';
 	$date_news= 	'';
@@ -378,8 +378,7 @@ body {
 						</ul></li>
 					<li id="menu-item-120"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-120"><a
-						href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-2/index.html">Aménagements
-							extérieurs</a>
+						href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-2/index.html">Aménagements extérieurs</a>
 						<ul class="sub-menu">
 							<li id="menu-item-274"
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-274"><a
@@ -413,8 +412,7 @@ body {
 						</ul></li>
 					<li id="menu-item-72"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-72"><a
-						href="piscine-a-debordement-bordeaux-gironde-dordogne-cezac-eden-blue-construction-piscine-2/index.html">Techniques
-							de construction</a>
+						href="piscine-a-debordement-bordeaux-gironde-dordogne-cezac-eden-blue-construction-piscine-2/index.html">Techniques	de construction</a>
 						<ul class="sub-menu">
 							<li id="menu-item-230"
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-230"><a
@@ -551,6 +549,68 @@ body {
 
 			<div class="row  no-bg ">
 				<div class="uxb-col  large-12  columns for-nested ">
+				<?php 
+			    if (!empty($result)):?>
+				<div class="row">
+					<div class="autoplayxav2">
+						
+			             <?php 
+				            foreach ($result as $value): 
+				                  ?>	
+						
+            						<div class="wpb_wrapper uxb-col large-12 columns ">
+            							<?php if(!empty($value['image1'])):?>
+            							<div class="uxb-col large-4 columns  no-padding " >
+            								<div class="wpb_wrapper">
+            									<div class="vc_single_image normal-align-left  "><br><br>
+            									   <a href="photos/news<?php echo $value['image1']?>" 
+            									   title="" data-src="photos/news<?php echo $value['image1']?>" data-thumbnail="photos/news/thumbs<?php echo $value['image1']?>" rel="lightbox[%POST_ID%]">
+            										<img src="photos/news/thumbs/<?php echo $value['image1']?>"
+            											alt="" class="image-shortcode" width="659" >
+            										</a>	
+            									</div>
+            								</div>
+            							</div>
+            							<div class="uxb-col large-8 columns   ">
+            							<?php else:?>
+            							<div class="uxb-col large-12 columns   ">
+            							<?php endif;?>
+            							
+            								<div class="wpb_wrapper">
+            									<h2 class="light    has-line  "><?php echo $value['titre']?> (<?php echo traitement_datetime_affiche($value['date_news'])?>)</h2>
+            									<div
+            										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+            										<div class="wpb_wrapper xavcss">
+            											<?php echo nl2br($value['contenu'])?>
+            											<br><br>
+            											 <?php if (!empty($value['accroche'])) {?>
+        						                          <a href="<?php echo $value['accroche']?>" class="bt-plus"><strong>en savoir +</strong></a>
+        						                          <?php } ?>
+            										</div>
+            									</div>
+            								</div>
+            							</div>
+            						</div>	
+						  <?php 
+						    endforeach;?>
+						
+					</div>
+				</div>	
+                
+
+					<div class=" row  no-bg">
+						<div class="uxb-col large-12 columns   ">
+							<div class="wpb_wrapper">
+								<hr class="thin dashed  divider">
+								<div class="wpb_text_column wpb_content_element ">
+									<div class="wpb_wrapper"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php 
+				endif;?>					
+				
 
 					<div class=" row ">
 						<div class="uxb-col large-6 columns   ">
@@ -601,6 +661,8 @@ body {
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class=" row  no-bg">
 						<div class="uxb-col large-12 columns   ">
 							<div class="wpb_wrapper">
@@ -608,6 +670,8 @@ body {
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class=" row ">
 						<div class="uxb-col large-12 columns   ">
 							<div class="wpb_wrapper">
@@ -742,68 +806,7 @@ body {
 					</div>
 
 
-				<div class="row">
-					<div class="autoplayxav2">
-						<div class="wpb_wrapper uxb-col large-12 columns ">
-							
-							<div class="uxb-col large-4 columns  no-padding " >
-								<div class="wpb_wrapper">
-									<div class="vc_single_image normal-align-left  ">
-										<img src="wp-content/uploads/2014/03/www.edenblue.fr_23.jpg"
-											alt="" class="image-shortcode " width="659" height="429">
-									</div>
-								</div>
-							</div>
-							<div class="uxb-col large-8 columns   ">
-								<div class="wpb_wrapper">
-									<h2 class="light    has-line  ">Des piscines en Promo (12/05/2015)</h2>
-									<div
-										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
-										<div class="wpb_wrapper">
-											e Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-	
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="wpb_wrapper uxb-col large-12 columns ">
-							<div class="uxb-col large-4 columns  no-padding " >
-								<div class="wpb_wrapper">
-									<div class="vc_single_image normal-align-left  ">
-										<img src="wp-content/uploads/2014/03/www.edenblue.fr_23.jpg"
-											alt="" class="image-shortcode " width="659" height="429">
-									</div>
-								</div>
-							</div>
-							<div class="uxb-col large-8 columns   ">
-								<div class="wpb_wrapper">
-									<h2 class="light    has-line  "> Promo de Printemps (12/05/2015)</h2>
-									<div
-										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
-										<div class="wpb_wrapper">
-											avant impression. Le Lorem Ipsum est le faux texte standard demorceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-	
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>	
 
-
-					<div class=" row  no-bg">
-						<div class="uxb-col large-12 columns   ">
-							<div class="wpb_wrapper">
-								<hr class="thin dashed  divider">
-								<div class="wpb_text_column wpb_content_element ">
-									<div class="wpb_wrapper"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
 					
 					
 					<div class=" row  no-bg">
