@@ -4,23 +4,20 @@ require 'admin/classes/News.php';
 require 'admin/classes/utils.php';
 session_start();
 $news = new News();
-if (!empty($_GET)){
-	$result = $news->newsGet($_GET['id']);
+$result = $news->newsValidGet();
+//print_r($result);
+if (empty($result)) {
+	$titre=  		'';
+	$date_news= 	'';
+	$accroche= 		'Pas de news pour le moment.';
+	$contenu= 		'';
 } else {
-	$result = $news->newsGet(null);
-}	
-	//print_r($result);
-	if (empty($result)) {
-		$titre=  		'';
-		$date_news= 	'';
-		$accroche= 		'Pas de news pour le moment.';
-		$contenu= 		'';
-	} else {
-		$titre=  		$result[0]['titre'];
-		$date_news= 	traitement_datetime_affiche($result[0]['date_news']);
-		$accroche= 		$result[0]['accroche'];
-		$contenu= 		$result[0]['contenu'];
-	}
+	$titre=  		$result[0]['titre'];
+	$date_news= 	traitement_datetime_affiche($result[0]['date_news']);
+	$accroche= 		$result[0]['accroche'];
+	$contenu= 		$result[0]['contenu'];
+}
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="fr-FR"><![endif]-->
@@ -353,7 +350,7 @@ body {
 				<ul id="root-menu" class="sf-menu">
 					<li id="menu-item-40"
 						class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-29 current_page_item menu-item-40"><a
-						href="index.html">Présentation</a></li>
+						href="index.php">Accueil</a></li>
 					<li id="menu-item-161"
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161"><a
 						href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-3/index.html">Galerie</a>
@@ -440,11 +437,10 @@ body {
 						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139"><a
 						href="piscine-beton-bordeaux-gironde-dordogne-cezac-eden-blue-couloir-de-nage-4/index.html">Offre
 							commerciale</a></li>
-					<li id="menu-item-452"
+					 <li id="menu-item-452"
 						class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a
 						href="/actu.php">Actus</a>
-						</li>
- 
+						</li>		
 					<li id="menu-item-452"
 						class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a
 						href="/construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-4/index.html">Contact</a>
@@ -457,7 +453,7 @@ body {
 								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-451"><a
 								href="construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-4/index.html">Etre
 									rappelé par un conseiller</a></li>
-						</ul></li>	
+						</ul></li>
 				</ul>
 			</div>
 			<nav id="mobile-menu" class="top-bar">
@@ -558,107 +554,297 @@ body {
 		<div id="inner-content-container">
 
 
-			<div class=" row  no-bg">
-				<div class="uxb-col large-12 columns   ">
-					<div class="wpb_wrapper">
-						<hr class="thin dashed  divider">
+
+			<div class="row  no-bg ">
+				<div class="uxb-col  large-12  columns for-nested ">
+
+					<div class=" row ">
+						<div class="uxb-col large-6 columns   ">
+							<div class="wpb_wrapper">
+								<h2 class="light    has-line  ">Constructeur de piscines
+									pr&egrave;s de Bordeaux (33)</h2>
+								<div
+									class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+									<div class="wpb_wrapper">
+										<p style="text-align: justify;">
+											<strong>Eden Blue</strong>, <strong>constructeur de
+												piscine en b&eacute;ton arm&eacute; monobloc</strong>, en <strong>Aquitaine.</strong><br>
+											Nous intervenons dans <strong>toute la Gironde</strong> (<strong>Bassin
+												d&rsquo;Arcachon, Bordeaux, Libourne,&nbsp; Blaye,
+												M&eacute;doc</strong>&hellip;) et dans <strong>les
+												d&eacute;partements limitrophes</strong> (<strong>Dordogne,
+												Charente, Landes et Lot et Garonne</strong>)
+										</p>
+										<p style="text-align: justify;">
+											La soci&eacute;t&eacute; <strong>Eden Blue</strong> est un
+											partenaire privil&eacute;gi&eacute; du groupe <a
+												href="http://www.leaderpool.fr/login?redirect=/"
+												target="_blank">Leader Pool </a>professionnel de <strong>la
+												piscine en b&eacute;ton arm&eacute;</strong> depuis plus de <strong>15
+												ans</strong> et avec plus de <strong>7000
+												r&eacute;alisations au niveau national et Europ&eacute;en</strong>.<br>
+											Eden Blue est <strong>une marque
+												d&eacute;pos&eacute;e depuis 2004</strong> et utilise le
+											proc&eacute;d&eacute; Leader Pool unique, brevet&eacute; et
+											agr&eacute;&eacute; <a
+												href="http://www.socotec-certification.com/">SOCOTEC</a>
+											pour la <strong>construction des piscines haut de
+												gamme</strong> s&rsquo;int&eacute;grant parfaitement &agrave; leur
+											environnement.
+										</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="uxb-col large-6 columns    no-padding">
+							<div class="wpb_wrapper">
+								<div class="vc_single_image normal-align-left  ">
+									<img src="wp-content/uploads/2014/03/www.edenblue.fr_5.jpg"
+										alt="" class="image-shortcode " width="495" height="372">
+								</div>
+							</div>
+						</div>
 					</div>
+					<div class=" row  no-bg">
+						<div class="uxb-col large-12 columns   ">
+							<div class="wpb_wrapper">
+								<hr class="thin dashed  divider">
+							</div>
+						</div>
+					</div>
+					<div class=" row ">
+						<div class="uxb-col large-12 columns   ">
+							<div class="wpb_wrapper">
+
+								<div class="wpb_text_column wpb_content_element ">
+									<div class="wpb_wrapper">
+										<p style="text-align: justify;">
+											Notre &eacute;quipe s&rsquo;appuie sur <strong>15
+												ann&eacute;es d&rsquo;exp&eacute;riences</strong> pour vous proposer
+											le projet qui correspond &agrave; vos attentes.<br> Nous
+											utilisons deux <a
+												href="couloir-de-nage-bordeaux-gironde-dordogne-cezac-eden-blue-piscine-naturelle-3/index.html"><strong>types
+													de rev&ecirc;tements piscines</strong></a> qui vous offre la
+											possibilit&eacute; de cr&eacute;er tous les effets et toutes
+											les ambiances que vous aurez imagine.<br>
+											<strong>Des piscines de caract&egrave;re,
+												contemporaine, miroir, &agrave; d&eacute;bordement,
+												naturelles, traditionnelle&hellip;</strong>
+										</p>
+										<ul>
+											<li style="text-align: justify;"><a
+												href="piscine-a-debordement-bordeaux-gironde-dordogne-cezac-eden-blue-construction-piscine-4/index.html"><strong>Piscine
+														contemporaine</strong></a></li>
+											<li style="text-align: justify;"><a
+												href="piscine-a-debordement-bordeaux-gironde-dordogne-cezac-eden-blue-construction-piscine-3/index.html"><strong>Piscine
+														&agrave; d&eacute;bordement</strong></a></li>
+											<li style="text-align: justify;"><a
+												href="piscine-beton-bordeaux-gironde-dordogne-cezac-eden-blue-couloir-de-nage-6/index.html"><strong>Piscine
+														naturelle</strong></a></li>
+											<li style="text-align: justify;"><a
+												href="piscine-naturelle-bordeaux-gironde-dordogne-cezac-eden-blue-piscine-a-debordement-2/index.html"><strong>Piscine
+														Miroir</strong></a></li>
+											<li style="text-align: justify;"><a
+												href="piscine-beton-bordeaux-gironde-dordogne-cezac-eden-blue-couloir-de-nage-5/index.html"><strong>Piscine
+														Int&eacute;rieur</strong></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class=" row ">
+						<div class="uxb-col large-12 columns    no-padding">
+							<div class="wpb_wrapper">
+								<div
+									class="vc_single_image normal-align-left  appear wpb_animate_when_almost_visible wpb_appear">
+									<img
+										src="wp-content/uploads/2014/03/www.edenblue.fr_img-accueil.jpg"
+										alt="" class="image-shortcode " width="1024" height="266">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class=" row  no-bg">
+						<div class="uxb-col large-12 columns   ">
+							<div class="wpb_wrapper">
+								<hr class="thin dashed  divider">
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<div class=" row ">
+						<div class="uxb-col large-6 columns   ">
+							<div class="wpb_wrapper">
+								<h2 class="light    has-line  ">Nos engagements</h2>
+								<div
+									class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+									<div class="wpb_wrapper">
+										<ul>
+											<li>
+												<div>
+													<div align="justify">&Eacute;tude
+														personnalis&eacute;e et r&eacute;activit&eacute;.</div>
+												</div>
+											</li>
+											<li>
+												<div align="justify">
+													<div>Accompagnement tout au long du processus, de la
+														conception &agrave; la r&eacute;ception de votre projet.</div>
+												</div>
+											</li>
+											<li>
+												<div align="justify">
+													<div>Charte/suivi qualit&eacute; : contr&ocirc;le
+														qualit&eacute; et proc&egrave;s verbaux &agrave; toutes
+														les &eacute;tapes de r&eacute;alisation.</div>
+												</div>
+											</li>
+											<li>
+												<div align="justify">
+													<div>Constructions dans les r&egrave;gles de
+														l&rsquo;art.</div>
+												</div>
+											</li>
+											<li>
+												<div align="justify">
+													<div>Assurance d&eacute;cennale.</div>
+												</div>
+											</li>
+											<li>
+												<div align="justify">
+													<div>SAV de qualit&eacute;.</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="uxb-col large-6 columns    no-padding">
+							<div class="wpb_wrapper">
+								<div class="vc_single_image normal-align-left  ">
+									<img src="wp-content/uploads/2014/03/www.edenblue.fr_23.jpg"
+										alt="" class="image-shortcode " width="659" height="429">
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class=" row  no-bg">
+						<div class="uxb-col large-12 columns   ">
+							<div class="wpb_wrapper">
+								<hr class="thin dashed  divider">
+							</div>
+						</div>
+					</div>
+
+
+				<div class="row">
+					<div class="autoplayxav2">
+						<div class="wpb_wrapper uxb-col large-12 columns ">
+							
+							<div class="uxb-col large-4 columns  no-padding " >
+								<div class="wpb_wrapper">
+									<div class="vc_single_image normal-align-left  ">
+										<img src="wp-content/uploads/2014/03/www.edenblue.fr_23.jpg"
+											alt="" class="image-shortcode " width="659" height="429">
+									</div>
+								</div>
+							</div>
+							<div class="uxb-col large-8 columns   ">
+								<div class="wpb_wrapper">
+									<h2 class="light    has-line  ">Des piscines en Promo (12/05/2015)</h2>
+									<div
+										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+										<div class="wpb_wrapper">
+											e Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="wpb_wrapper uxb-col large-12 columns ">
+							<div class="uxb-col large-4 columns  no-padding " >
+								<div class="wpb_wrapper">
+									<div class="vc_single_image normal-align-left  ">
+										<img src="wp-content/uploads/2014/03/www.edenblue.fr_23.jpg"
+											alt="" class="image-shortcode " width="659" height="429">
+									</div>
+								</div>
+							</div>
+							<div class="uxb-col large-8 columns   ">
+								<div class="wpb_wrapper">
+									<h2 class="light    has-line  "> Promo de Printemps (12/05/2015)</h2>
+									<div
+										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+										<div class="wpb_wrapper">
+											avant impression. Le Lorem Ipsum est le faux texte standard demorceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
+	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+
+
+					<div class=" row  no-bg">
+						<div class="uxb-col large-12 columns   ">
+							<div class="wpb_wrapper">
+								<hr class="thin dashed  divider">
+								<div class="wpb_text_column wpb_content_element ">
+									<div class="wpb_wrapper"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					<div class=" row  no-bg">
+						<div class="uxb-col large-12 columns    no-padding">
+							<div class="wpb_wrapper">
+								<div class="cta-box ">
+									<div class="cta-box-content ">
+										<div align="left">Pour toutes informations
+											compl&eacute;mentaires ou la r&eacute;alisation d&rsquo;une
+											&eacute;tude personnalis&eacute;e vous pouvez nous laisser
+											vos coordonn&eacute;es dans l&rsquo;onglet contact.</div>
+										<div align="justify"></div>
+										<p align="left">
+											<strong>Nous rentrerons en relation avec vous dans
+												les meilleurs d&eacute;lais.</strong>
+										</p>
+										<p></p>
+									</div>
+									<div class="cta-box-button right ">
+										<a
+											href="/construction-piscine-bordeaux-piscine-a-debordement-gironde-eden-blue-piscine-naturelle-dordogne-couloir-de-nage-cezac-piscine-beton-4/index.html"
+											class="   flat button"> Contact</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
 				</div>
+
+
 			</div>
 
-			<div class="row">
-					     <?php 
-			             if (!empty($result)):
-				            $i=1;
-				            foreach ($result as $value): 
-				                $i++;
-				                if($i%2==0):
-				                  ?>	
-            						<div class="wpb_wrapper uxb-col large-12 columns ">
-            							<?php if(!empty($value['image1'])):?>
-            							<div class="uxb-col large-4 columns  no-padding " >
-            								<div class="wpb_wrapper">
-            									<div class="vc_single_image normal-align-left  "><br><br>
-            									   <a href="photos/news<?php echo $value['image1']?>" 
-            									   title="" data-src="photos/news<?php echo $value['image1']?>" data-thumbnail="photos/news/thumbs<?php echo $value['image1']?>" rel="lightbox[%POST_ID%]">
-            										<img src="photos/news/thumbs/<?php echo $value['image1']?>"
-            											alt="" class="image-shortcode" width="659" >
-            										</a>	
-            									</div>
-            								</div>
-            							</div>
-            							<div class="uxb-col large-8 columns   ">
-            							<?php else:?>
-            							<div class="uxb-col large-12 columns   ">
-            							<?php endif;?>
-            							
-            								<div class="wpb_wrapper">
-            									<h2 class="light    has-line  "><?php echo $value['titre']?> (<?php echo traitement_datetime_affiche($value['date_news'])?>)</h2>
-            									<div
-            										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
-            										<div class="wpb_wrapper xavcss">
-            											<?php echo nl2br($value['contenu'])?>
-            											<br><br>
-            											 <?php if (!empty($value['accroche'])) {?>
-        						                          <a href="<?php echo $value['accroche']?>" class="bt-plus"><strong>en savoir +</strong></a>
-        						                          <?php } ?>
-            										</div>
-            									</div>
-            								</div>
-            							</div>
-            						</div>	
-            						
-            						<div class=" large-12 columns   ">
-								        <hr class="thin dashed  divider">
-						              </div>	
-            										  
-						         <?php else: ?>
-						              <div class="wpb_wrapper uxb-col large-12 columns ">
-							                <?php if(!empty($value['image1'])):?>
-                							<div class="uxb-col large-8 columns   ">
-                							<?php else:?>
-                							<div class="uxb-col large-12 columns   ">
-                							<?php endif;?>
-                								<div class="wpb_wrapper">
-                									<h2 class="light    has-line  "><?php echo $value['titre']?> (<?php echo traitement_datetime_affiche($value['date_news'])?>)</h2>
-                									<div
-                										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
-                										<div class="wpb_wrapper xavcss">
-                								            <?php echo nl2br($value['contenu'])?>
-            											     <br><br>
-                											 <?php if (!empty($value['accroche'])) {?>
-            						                          <a href="<?php echo $value['accroche']?>" class="bt-plus"><strong>en savoir +</strong></a>
-            						                          <?php } ?>
-                										</div>
-                									</div>
-                								</div>
-                							</div>
-                						
-                							<?php if(!empty($value['image1'])):?>
-                							<div class="uxb-col large-4 columns  no-padding " >
-                								<div class="wpb_wrapper">
-                									<div class="vc_single_image normal-align-left  "><br><br>
-                										<a href="photos/news<?php echo $value['image1']?>" 
-            									           title="" data-src="photos/news<?php echo $value['image1']?>" data-thumbnail="photos/news/thumbs<?php echo $value['image1']?>" rel="lightbox[%POST_ID%]">
-            										      <img src="photos/news/thumbs/<?php echo $value['image1']?>" alt="" class="image-shortcode" width="659" >
-            										</a>	
-                									</div>
-                								</div>
-                							</div>
-                							<?php endif;?>
-                						</div>	
-                						<div class=" large-12 columns   ">
-								            <hr class="thin dashed  divider">
-						                  </div>
-						         <?php endif;?> 
-						  <?php 
-						    endforeach;?>
-						  <?php 
-						  endif;?>
-						
-						
-						
-			
 
 
 		</div>

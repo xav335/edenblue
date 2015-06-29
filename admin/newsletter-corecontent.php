@@ -91,7 +91,10 @@ EOD;
 }
 $corps .= <<<EOD
 
-					<a href="$facebookLink"><img  src="http://$urlSite/newsletter/fb.png" alt=""></a><br>
+					<img  src="http://$urlSite/newsletter/pano.png" alt=""><br>
+    				<div >
+    			      	<a href="$facebookLink"><img width="50" src="http://$urlSite/newsletter/facebook.png" alt="" ></a>
+    			  	</div>
 					<p>$bas_page</p>
 					<p class="bas">Si vous souhaitez vous désinscrire de cette newslettrer suivez le lien suivant : <a href="http://$urlSite/newsletter/desinscription.php?id=" >désinscription</a></p>
 					<img src="http://$urlSite/newsletter/track.php?id=XwXwXwXw" alt="">
