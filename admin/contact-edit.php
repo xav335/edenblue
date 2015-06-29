@@ -1,3 +1,4 @@
+<?php include_once '../inc/inc.config.php'; ?>
 <?php include_once 'inc-auth-granted.php';?>
 <?php include_once 'classes/utils.php';?>
 <?php 
@@ -46,7 +47,7 @@ if (!empty($_GET)){ //Modif
 			<h3><?php echo $labelTitle ?></h3><br>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				
-					<form name="formulaire" class="form-horizontal" method="POST"  action="formprocess.php">
+					<form name="formulaire" class="form-horizontal" method="POST"  action="contact-fp.php">
 						<input type="hidden" name="reference" value="contact">
 						<input type="hidden" name="action" value="<?php echo $action ?>">
 						<input type="hidden" name="id" id="id" value="<?php echo $id ?>">

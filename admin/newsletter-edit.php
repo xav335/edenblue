@@ -1,3 +1,4 @@
+<?php include_once '../inc/inc.config.php'; ?>
 <?php include_once 'inc-auth-granted.php';?>
 <?php include_once 'classes/utils.php';?>
 <?php 
@@ -43,7 +44,7 @@ if (!empty($_GET)){ //Modif
 		<div class="row">
 			<h3><?php echo $labelTitle ?></h3>
 			<div class="col-xs-12 col-sm-12 col-md-12">
-				<form name="formulaire" class="form-horizontal" method="POST"  action="formprocess.php" >
+				<form name="formulaire" class="form-horizontal" method="POST"  action="newsletter-fp.php" >
 					<input type="hidden" name="reference" value="newsletter">
 					<input type="hidden" name="action" id="action" value="<?php echo $action ?>">
 					<input type="hidden" name="postaction" id="postaction" value="">
@@ -63,24 +64,17 @@ if (!empty($_GET)){ //Modif
 					$i = 1;
 					if (isset($result[0]['newsletter_detail'])) {
 						foreach ($result[0]['newsletter_detail'] as $value) { 
-							$online =  $value['online'];
 							$url = $value['url'];
 							if ($value['url']=='') 
-								$url='/img/ajoutImage.jpg';  ?>
+								$url='/ajoutImage.jpg';  ?>
 								
 							<div class="form-group" style=" border:6px ridge white; padding: 30px 10px 30px 10px; ">
-									<label for="titre">Choisis la  couleur :</label>
-									
-									Bleu:<input type="radio" name="online<?php echo $i ?>" value="bleu" <?php if ($online=='bleu') echo 'checked' ;?>>&nbsp;
-								    Vert:<input type="radio" name="online<?php echo $i ?>" value="vert" <?php if ($online=='vert') echo 'checked' ;?>>&nbsp;
-								    Jaune:<input type="radio" name="online<?php echo $i ?>" value="jaune" <?php if ($online=='jaune') echo 'checked' ;?>>&nbsp;
-								    Rose:<input type="radio" name="online<?php echo $i ?>" value="fuschia" <?php if ($online=='fuschia') echo 'checked' ;?>>&nbsp;
-								<br><br>
+							
 								<label class="col-sm-2" for="titre">Sous-titre <?php echo $i ?> :</label>
 							  	
 								<input type="text" class="col-sm-10" name="sstitre<?php echo $i ?>"  id="sstitre<?php echo $i ?>" value="<?php echo $value['titre'] ?>"><br>
 		             			<input type="hidden"  name="url<?php echo $i ?>"  id="url<?php echo $i ?>" value="<?php echo $url ?>"><br>
-		            			<a href="javascript:openCustomRoxy('<?php echo $i ?>')"><img src="<?php echo $url ?>" id="customRoxyImage<?php echo $i ?>" style="max-width:600px;"></a>
+		            			<a href="javascript:openCustomRoxy('<?php echo $i ?>')"><img src="/photos/newsletter/thumbs<?php echo $url ?>" id="customRoxyImage<?php echo $i ?>" style="max-width:600px;"></a>
 								<img src="img/del.png" width="20" alt="Supprimer" onclick="clearImage(<?php echo $i ?>)"/>
 								<br>
 		 						<label for="link<?php echo $i ?>">Url image <?php echo $i ?>:</label><br>
@@ -100,22 +94,15 @@ if (!empty($_GET)){ //Modif
 					} else {
 						$i=1; ?>
 							<div class="form-group" style=" border:6px ridge white; padding: 30px 10px 30px 10px; ">
-								<label for="titre">Choisis la  couleur :</label>
-									
-									Bleu:<input type="radio" name="online<?php echo $i ?>" value="bleu" checked' >&nbsp;
-								    Vert:<input type="radio" name="online<?php echo $i ?>" value="vert" >&nbsp;
-								    Jaune:<input type="radio" name="online<?php echo $i ?>" value="jaune" >&nbsp;
-								    Rose:<input type="radio" name="online<?php echo $i ?>" value="fuschia" >&nbsp;
-								<br><br>
 								<label class="col-sm-2" for="titre">Sous-titre <?php echo $i ?> :</label>
 							  	
 								<input type="text" class="col-sm-10" name="sstitre<?php echo $i ?>"  id="sstitre<?php echo $i ?>" value=""><br>
 		             			<input type="hidden"  name="url<?php echo $i ?>"  id="url<?php echo $i ?>" value=""><br>
-		            			<a href="javascript:openCustomRoxy('<?php echo $i ?>')"><img src="/img/ajoutImage.jpg"" id="customRoxyImage<?php echo $i ?>" style="max-width:600px;"></a>
+		            			<a href="javascript:openCustomRoxy('<?php echo $i ?>')"><img src="img/ajoutImage.jpg"" id="customRoxyImage<?php echo $i ?>" style="max-width:600px;"></a>
 								<img src="img/del.png" width="20" alt="Supprimer" onclick="clearImage(<?php echo $i ?>)"/>
 								<br>
 		 						<label for="link<?php echo $i ?>">Url image <?php echo $i ?>:</label><br>
-		 						<input type="text" class="col-sm-11" name="link<?php echo $i ?>"  id="link<?php echo $i ?>" value="http://www.iconeo.fr/" ><br>
+		 						<input type="text" class="col-sm-11" name="link<?php echo $i ?>"  id="link<?php echo $i ?>" value="<?php echo $urlSiteDefault?>" ><br>
 		 						<br>
 		 						<label for="text<?php echo $i ?>">Texte <?php echo $i ?>:</label><br>
 				           		<textarea class="col-sm-11"  name="texte<?php echo $i ?>"  id="texte<?php echo $i ?>" rows="2" ></textarea>
@@ -133,11 +120,11 @@ if (!empty($_GET)){ //Modif
 							  	
 								<input type="text" class="col-sm-10" name="sstitre<?php echo $i ?>"  id="sstitre<?php echo $i ?>" value=""><br>
 		             			<input type="hidden"  name="url<?php echo $i ?>"  id="url<?php echo $i ?>" value=""><br>
-		            			<a href="javascript:openCustomRoxy('<?php echo $i ?>')"><img src="/img/ajoutImage.jpg"" id="customRoxyImage<?php echo $i ?>" style="max-width:600px;"></a>
+		            			<a href="javascript:openCustomRoxy('<?php echo $i ?>')"><img src="img/ajoutImage.jpg"" id="customRoxyImage<?php echo $i ?>" style="max-width:600px;"></a>
 								<img src="img/del.png" width="20" alt="Supprimer" onclick="clearImage(<?php echo $i ?>)"/>
 								<br>
 		 						<label for="link<?php echo $i ?>">Url image <?php echo $i ?>:</label><br>
-		 						<input type="text" class="col-sm-11" name="link<?php echo $i ?>"  id="link<?php echo $i ?>" value="http://www.iconeo.fr/" ><br>
+		 						<input type="text" class="col-sm-11" name="link<?php echo $i ?>"  id="link<?php echo $i ?>" value="<?php echo $urlSiteDefault?>" ><br>
 		 						<br>
 		 						<label for="text<?php echo $i ?>">Texte <?php echo $i ?>:</label><br>
 				           		<textarea class="col-sm-11"  name="texte<?php echo $i ?>"  id="texte<?php echo $i ?>" rows="2" ></textarea>
@@ -156,7 +143,7 @@ if (!empty($_GET)){ //Modif
 					<input type="hidden" name="ndencards" id="ndencards" value="<?php echo $i-1 ?>">
 					<div class="form-group" >
 						<label class="col-sm-1" for="titre">Bas de page :</label>
-					    <textarea class="col-sm-11"  name="bas_page"  id="bas_page" rows="3"  ><?php echo $bas_page ?></textarea>
+					    <textarea class="col-sm-11"  name="bas_page"  id="bas_page" rows="3" required ><?php echo $bas_page ?></textarea>
 					</div>	
 					<div class="form-group" >
 		            	<button class="btn btn-success col-sm-12" type="submit" onclick="$('#postaction').val('modif')"> Valider </button>
@@ -175,7 +162,7 @@ if (!empty($_GET)){ //Modif
 						}
 	
 						function clearImage(idImage){
-							$('#customRoxyImage'+idImage).attr('src', '/img/ajoutImage.jpg');
+							$('#customRoxyImage'+idImage).attr('src', 'img/ajoutImage.jpg');
 							$('#url'+idImage).val('');
 						}
 						

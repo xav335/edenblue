@@ -1,4 +1,11 @@
+<?php require_once '../inc/inc.config.php';?>
 <?php
+require '../admin/classes/Contact.php';
+require '../admin/classes/utils.php';
+session_start();
+
+$contact = new Contact();
+
 error_log ( date ( "Y-m-d H:i:s" ) . " : " . $_POST ['action'] . "\n", 3, "../log/spy.log" );
 error_log ( date ( "Y-m-d H:i:s" ) . " : " . $_POST ['name'] . "\n", 3, "../log/spy.log" );
 error_log ( date ( "Y-m-d H:i:s" ) . " : " . $_POST ['horaire'] . "\n", 3, "../log/spy.log" );
@@ -8,17 +15,32 @@ error_log ( date ( "Y-m-d H:i:s" ) . " : " . $_POST ['message'] . "\n", 3, "../l
 error_log ( date ( "Y-m-d H:i:s" ) . " : " . $_POST ['cp'] . "\n", 3, "../log/spy.log" );
 
 if ($_POST ["action"] == "sendMail") {
+    
+    try {
+        $result1 = $contact->contactGetByEmail($_POST['email']);
+        //si l'email existe en base on y touche pas ...
+        //TODO: mettre à jour l'inscription a newsletter
+        if(empty($result1)){
+            $_POST['fromcontact']='on';
+            $contact->contactAdd($_POST);
+            $contact = null;
+        }
+    } catch (Exception $e) {
+        error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "../log/spy.log");
+        $contact = null;
+		exit();
+    }
 	
 	//$_to = "edenblue33@gmail.com";
 	//$_to = "fjavi.gonzalez@gmail.com";
-	$_to = "info@edenblue.fr";
+	$_to = $mailContact;
 	//$_to = "web-IYAFtN@mail-tester.com";
-	$sujet = "Eden Blue - Contact Site";
+	$sujet = "$mailNameCustomer - Contact Site";
 	
-	$entete = "From:EdenBlue <contact@edenblue.fr>\n";
+	$entete = "From:$mailNameCustomer <$mailCustomer>\n";
 	$entete .= "MIME-version: 1.0\n";
 	$entete .= "Content-type: text/plain; charset= iso-8859-1\n";
-	$entete .= "Bcc: edenblue33@gmail.com,xav335@hotmail.com,fjavi.gonzalez@gmail.com\n";
+	$entete .= "Bcc: ". $mailBcc ."\n";
 	
 	$corps = "";
 	$corps .= "Bonjour,\n";

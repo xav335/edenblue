@@ -1,3 +1,4 @@
+<?php include_once '../inc/inc.config.php'; ?>
 <?php include_once 'inc-auth-granted.php';?>
 <?php include_once 'classes/utils.php';?>
 <?php 
@@ -72,13 +73,13 @@ require 'classes/News.php';
 								<td><?php echo $value['accroche']?></td>
 								<td><?php echo $value['contenu']?></td>
 								<td><?php if(!empty($value['image1']) && isset($value['image1'])) echo 'image OK' ?></td>
-								<td><?php echo $value['online']?></td>
+								<td><img src="img/<?php echo $online ?>.png" width="30" ></td>
 								<td><a href="news-edit.php?id=<?php echo $value['id_news'] ?>"><img src="img/modif.png" width="30" alt="Modifier" ></a></td>
 								<td>
 									<div style="display: none;" class="supp<?php echo $value['id_news']?> alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close"  aria-label="Close" onclick="$('.supp<?php echo $value['id_news']?>').css('display', 'none');"><span aria-hidden="true">×</span></button>
 								      <strong>Voulez vous vraiment supprimer ?</strong>
-								      <button type="button" class="btn btn-danger" onclick="location.href='formprocess.php?reference=news&action=delete&id=<?php echo $value['id_news'] ?>'">Oui !</button>
+								      <button type="button" class="btn btn-danger" onclick="location.href='news-fp.php?reference=news&action=delete&id=<?php echo $value['id_news'] ?>'">Oui !</button>
 								 	</div>
 								<img src="img/del.png" width="20" alt="Supprimer" onclick="$('.supp<?php echo $value['id_news']?>').css('display', 'block');"> </td>
 							</tr>

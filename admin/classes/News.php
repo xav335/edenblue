@@ -44,6 +44,7 @@ class News extends StorageManager {
 		$this->begin();
 		
 		try {
+			($value['online']=='on') ? $online = 1 : $online = 0;
 			$sql = "INSERT INTO  `news`
 						(`date_news`, `titre`, `accroche`, `image1`, `contenu`, `online`)
 						VALUES (
@@ -52,7 +53,7 @@ class News extends StorageManager {
 						'". addslashes($value['accroche']) ."',
 						'". addslashes($value['url1']) ."',
 						'". addslashes($value['contenu']) ."',
-						'". addslashes($value['online']) ."'
+						". $online ." 	
 					);";
 			$result = mysqli_query($this->mysqli,$sql);
 			
@@ -78,14 +79,14 @@ class News extends StorageManager {
 		 $this->dbConnect();
 		$this->begin();
 		try {
-			//($value['online']=='on') ? $online = 1 : $online = 0;
+			($value['online']=='on') ? $online = 1 : $online = 0;
 			$sql = "UPDATE  .`news` SET
 					`date_news`='". $this->inserer_date($value['datepicker']) ."', 
 					`titre`='". addslashes($value['titre']) ."', 
 					`accroche`='". addslashes($value['accroche']) ."', 
 					`image1`='". addslashes($value['url1']) ."',
 					`contenu`='". addslashes($value['contenu']) ."',
-					`online`='". $value['online'] ."'		 
+					`online`=". $online ."		 
 					WHERE `id_news`=". $value['id'] .";";
 			$result = mysqli_query($this->mysqli,$sql);
 			

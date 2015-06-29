@@ -1,3 +1,4 @@
+<?php include_once '../inc/inc.config.php'; ?>
 <?php include_once 'inc-auth-granted.php';?>
 <?php include_once 'classes/utils.php';?>
 <?php 
@@ -19,11 +20,11 @@ if (!empty($_GET)){
 		<div class="row">
 			<div class="col-md-10">
 				<h3>Aperçu de la newsletter :</h3>
-				<iframe id="laframe" src="/admin/mailnewslettercore.php?id=<?php  echo $id ?>" style="width:720px;height:500px;" frameborder="1" ></iframe>
+				<iframe id="laframe" src="/admin/newsletter-corecontent.php?id=<?php  echo $id ?>" style="width:720px;height:500px;" frameborder="1" ></iframe>
 			</div>
 			<div class="col-md-2">
-				<h4>Tester la news <br>(envoi limité à contact@iconeo.fr)</h4>
-				<form name="formulaire" class="form-horizontal" method="POST"  action="formprocess.php">
+				<h4>Tester la news <br>(envoi limité à <?php echo $mailCustomer?>)</h4>
+				<form name="formulaire" class="form-horizontal" method="POST"  action="newsletter-fp.php">
 					<input type="hidden" name="reference" value="newsletter">
 					<input type="hidden" name="action" id="action" value="envoi">
 					<input type="hidden" name="postaction" id="postaction" value="">

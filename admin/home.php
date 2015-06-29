@@ -1,6 +1,6 @@
+<?php include_once '../inc/inc.config.php'; ?>
 <?php 
 require 'classes/Authentication.php';
-require 'classes/Goldbook.php';
 session_start();
 
 $authentication = new Authentication();

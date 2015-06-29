@@ -117,14 +117,13 @@ class Newsletter extends StorageManager {
 		for ($i = 1; $i <  $value['ndencards']+1; $i++) {
 		
 			$sql = "INSERT INTO  .`newsletter_detail`
-						(`id_newsletter`,`titre`, `url`, `link`,`texte`,`online`)
+						(`id_newsletter`,`titre`, `url`, `link`,`texte`)
 						VALUES (
 						". $id .",
 						'". addslashes($value['sstitre'.$i]) ."',
 						'". addslashes($value['url'.$i]) ."',
 						'". addslashes($value['link'.$i]) ."',
-						'". addslashes($value['texte'.$i]) ."',
-						'". addslashes($value['online'.$i]) ."'
+						'". addslashes($value['texte'.$i]) ."'
 					);";
 			$result = mysqli_query($this->mysqli,$sql);
 		
@@ -279,7 +278,7 @@ class Newsletter extends StorageManager {
 	
 		} catch (Exception $e) {
 			$this->rollback();
-			throw new Exception("Erreur Mysql newsletterModify ". $e->getMessage());
+			throw new Exception("Erreur Mysql journalNewsletterTrack ". $e->getMessage());
 			return "errrrrrrooooOOor";
 		}
 	

@@ -1,3 +1,4 @@
+<?php include_once '../inc/inc.config.php'; ?>
 <?php include_once 'inc-auth-granted.php';?>
 <?php include_once 'classes/utils.php';?>
 <?php 
@@ -17,12 +18,15 @@ if (!empty($_GET)){ //Modif
 		$date_news= 	traitement_datetime_affiche($result[0]['date_news']);
 		$accroche= 		$result[0]['accroche'];
 		$contenu= 	$result[0]['contenu'];
-		$online = $result[0]['online'];
-
+		if($result[0]['online']=='1') {
+			$online = 'checked';
+		} else {
+			$online = '';
+		}
 		for ($i=1;$i<2;$i++) {
 			$image[$i] = 	$result[0]['image'.$i];
 			if(empty($image[$i]) || !isset($image[$i])){
-				$img[$i]  = 'img/favicon.png';
+				$img[$i]  = '/img/favicon.png';
 				$imgval[$i]  = '';
 			} else {
 				$img[$i]  = '/photos/news/thumbs'. $image[$i];
@@ -38,9 +42,9 @@ if (!empty($_GET)){ //Modif
 	$date_news= 	null;
 	$accroche= 		null;
 	$contenu= 		null;
-	$online = 		'bleu';
+	$online = 		null;
 	for ($i=1;$i<2;$i++) {
-		$img[$i]  = 'img/favicon.png';
+		$img[$i]  = '/img/favicon.png';
 		$imgval[$i]  = '';
 	}
 }
@@ -58,7 +62,7 @@ if (!empty($_GET)){ //Modif
 		<div class="row">
 			<h3><?php echo $labelTitle ?></h3>
 			<div class="col-xs-12 col-sm-12 col-md-12">
-				<form name="formulaire" class="form-horizontal" method="POST"  action="formprocess.php">
+				<form name="formulaire" class="form-horizontal" method="POST"  action="news-fp.php">
 					<input type="hidden" name="reference" value="news">
 					<input type="hidden" name="action" value="<?php echo $action ?>">
 					<input type="hidden" name="id" id="id" value="<?php echo $id ?>">
@@ -68,12 +72,8 @@ if (!empty($_GET)){ //Modif
 					    <input class="col-sm-2" type="text" name="datepicker" required id="datepicker" value="<?php echo $date_news?>" >
 					</div>
 					 <div class="form-group" >
-						<label for="titre">Choisis la  couleur :</label>
-						
-						Bleu:<input type="radio" name="online" value="bleu" <?php if ($online=='bleu') echo 'checked' ;?>>&nbsp;
-					    Vert:<input type="radio" name="online" value="vert" <?php if ($online=='vert') echo 'checked' ;?>>&nbsp;
-					    Jaune:<input type="radio" name="online" value="jaune" <?php if ($online=='jaune') echo 'checked' ;?>>&nbsp;
-					    Rose:<input type="radio" name="online" value="fuschia" <?php if ($online=='fuschia') echo 'checked' ;?>>&nbsp;
+						<label for="titre">Actu à la une :</label>
+					    <input type="checkbox" name="online" <?php echo  $online ?>>
 					</div>
 					<div class="form-group" >
 						<label class="col-sm-1" for="titre">Titre :</label>
@@ -82,7 +82,7 @@ if (!empty($_GET)){ //Modif
 					
 					<div class="form-group">
 						<label for="accroche">Contenu :</label><br>
-		           		<textarea class="col-sm-11" name="contenu" id="contenu" rows="2" ><?php echo $contenu ?></textarea>
+		           		<textarea class="col-sm-11" name="contenu" id="contenu" rows="5" ><?php echo $contenu ?></textarea>
 		            </div>
 		            
 		            <div class="form-group" >
@@ -91,7 +91,7 @@ if (!empty($_GET)){ //Modif
 		            </div> 
 		           
 		            <div class="form-group"><br>
-						<label  for="titre">Si tu mets une photo c'est la photo qui apparait </label>
+						<label  for="titre">Choisissez la photos </label>
 						<input type="hidden"  name="idImage"  id="idImage" value="">
 					</div>	
 				
@@ -118,7 +118,7 @@ if (!empty($_GET)){ //Modif
 						}
 	
 						function clearImage(idImage){
-							$('#customRoxyImage'+idImage).attr('src', 'img/favicon.png');
+							$('#customRoxyImage'+idImage).attr('src', '/img/favicon.png');
 							$('#url'+idImage).val('');
 						}
 						

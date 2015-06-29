@@ -554,7 +554,7 @@ body {
 							</div>
 							<div class="uxb-col large-8 columns   ">
 								<div class="wpb_wrapper">
-									<h2 class="light    has-line  ">Titre actu</h2>
+									<h2 class="light    has-line  ">Fêtes des piscines et des prix (18/05/2015)</h2>
 									<div
 										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
 										<div class="wpb_wrapper xavcss">
@@ -580,7 +580,7 @@ body {
 							
 							<div class="uxb-col large-8 columns   ">
 								<div class="wpb_wrapper">
-									<h2 class="light    has-line  ">Titre XAV</h2>
+									<h2 class="light    has-line  ">Des piscines en Promo (12/05/2015)</h2>
 									<div
 										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
 										<div class="wpb_wrapper xavcss">
@@ -630,7 +630,7 @@ body {
 							
 							<div class="uxb-col large-8 columns   ">
 								<div class="wpb_wrapper xavcss">
-									<h2 class="light    has-line  ">Titre XAV</h2>
+									<h2 class="light    has-line  "> Promo de Printemps (12/05/2015)</h2>
 									<div
 										class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
 										<div class="wpb_wrapper xavcss">

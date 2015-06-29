@@ -3,14 +3,14 @@
 <?php include_once 'classes/utils.php';?>
 <?php include_once 'classes/pagination.php';?>
 <?php 
-require 'classes/Contact.php';
+require 'classes/Newsletter.php';
 
-	$contact = new Contact();
+	$newsletter = new Newsletter();
+	$total = $newsletter->journalNewsletterDetailNumberGet($_GET['id'],null);
+	$totalread = $newsletter->journalNewsletterDetailNumberGet($_GET['id'],1);
+	//echo $totalread;
 	
-	$total = $contact->contactNumberGet();
-	//$result = $contact->contactGet(null, $offset, $count);
-	
-	$epp = 50; // nombre d'entrées à afficher par page (entries per page)
+	$epp = 13; // nombre d'entrées à afficher par page (entries per page)
 	$nbPages = ceil($total/$epp); // calcul du nombre de pages $nbPages (on arrondit à l'entier supérieur avec la fonction ceil())
 	 
 	// Récupération du numéro de la page courante depuis l'URL avec la méthode GET
@@ -34,10 +34,10 @@ require 'classes/Contact.php';
 	$start = ($current * $epp - $epp);
 	
 	// Récupération des données à afficher pour la page courante
-	$result = $contact->contactGet(null, $start, $epp);
+	$result = $newsletter->journalNewsletterDetailGet($_GET['id'], $start, $epp);
 	
 	
-	//print_r($res);
+	//print_r($result);
 	if (empty($result)) {
 		$message = 'Aucun enregistrements';
 	} else {
@@ -56,31 +56,34 @@ require 'classes/Contact.php';
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12">
-				<?php echo paginate('contact-list.php', '?p=', $nbPages, $current); ?>
+			<h3>Tracking de l'envoi de mail n°: <?php echo $_GET['id']?></h3>
+				<?php echo paginate('journalnewsletter-detail.php?id='. $_GET['id'], '&p=', $nbPages, $current); ?>
+				<a class="btn btn-success pull-right" href="/admin/newsletterjournal-list.php">Retour</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12">
-
+				
 				<table class="table table-hover table-bordered table-condensed table-striped" >
 					<thead>
 						<tr>
-							<th class="col-md-1" style="">
-								ID
+							<th class="col-md-3" style="" colspan="3">
+								<h4>Emails lus: <?php echo $totalread?> - Emails non lus : <?php echo $total-$totalread?></h4>  
 							</th>
-							<th class="col-md-2" style="">
+						</tr>
+					</thead>
+					<thead>
+						<tr>
+							<th class="col-md-3" style="">
 								Nom prénom
 							</th>
-							<th class="col-md-2" style="">
-								Email
+							<th class="col-md-1" style="">
+								Lu par le destinataire
 							</th>
 							<th class="col-md-1" style="">
-								Newletter
+								Message erreur
 							</th>
-							<th class="col-md-1" colspan="2" style="">
-								Actions
-							</th>
-							
+						
 						</tr>
 					</thead>
 					<tbody>
@@ -89,25 +92,17 @@ require 'classes/Contact.php';
 							$i=0;
 							foreach ($result as $value) { 
 							$i++;
-							if($value['newsletter']=='1') {
+							if($value['read']=='1') {
 								$online = 'check';
 							} else {
 								$online = 'vide';
 							}
 							?>
 							<tr class="<?php if ($i%2!=0) echo 'info'?>">
-								<td><?php echo $value['id']?></td>
-								<td><?php echo $value['name'] ."  ". $value['firstname']?></td>
+								
 								<td><?php echo $value['email']?></td>
 								<td><img src="img/<?php echo $online ?>.png" width="30" ></td>
-								<td><a href="contact-edit.php?id=<?php echo $value['id'] ?>"><img src="img/modif.png" width="30" alt="Modifier" ></a></td>
-								<td>
-									<div style="display: none;" class="supp<?php echo $value['id']?> alert alert-warning alert-dismissible fade in" role="alert">
-								      <button type="button" class="close"  aria-label="Close" onclick="$('.supp<?php echo $value['id']?>').css('display', 'none');"><span aria-hidden="true">×</span></button>
-								      <strong>Voulez vous vraiment supprimer ?</strong>
-								      <button type="button" class="btn btn-danger" onclick="location.href='formprocess.php?reference=contact&action=delete&id=<?php echo $value['id'] ?>'">Oui !</button>
-								 	</div>
-								<img src="img/del.png" width="20" alt="Supprimer" onclick="$('.supp<?php echo $value['id']?>').css('display', 'block');"> </td>
+								<td><?php echo $value['error'] ?></td>
 							</tr>
 							<?php } ?>
 						<?php } ?>	
@@ -116,7 +111,7 @@ require 'classes/Contact.php';
 
 				<h3><?php echo $message?></h3>
 			</div>
-			<?php echo paginate('contact-list.php', '?p=', $nbPages, $current); ?>
+			<?php echo paginate('journalnewsletter-detail.php?id='. $_GET['id'], '&p=', $nbPages, $current); ?>
 		</div>
 	</div>
 </body>

@@ -8,7 +8,7 @@ class ImageManager {
 		
 	}
 	
-	public function imageResize($source, $destination, $width, $height){
+	public function imageResize($source, $destination, $width, $height, $boxedType){
 		$image = new Zebra_Image();
 		
 		$image->source_path = $source;
@@ -19,7 +19,9 @@ class ImageManager {
 		$image->enlarge_smaller_images = true;
 		$image->preserve_time = true;
 		
-		if (!$image->resize($width, $height, ZEBRA_IMAGE_NOT_BOXED, '#FFFFFF')) {
+		if (!isset($boxedType))  $boxedType=ZEBRA_IMAGE_NOT_BOXED;
+		
+		if (!$image->resize($width, $height, $boxedType, '#FFFFFF')) {
 		
 			// if there was an error, let's see what the error is about
 			switch ($image->error) {
