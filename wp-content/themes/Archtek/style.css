@@ -494,7 +494,7 @@ body.admin-bar #header-container.no-fixed {
 	display: inline-block; /* Can solve mysterious 1px diff in FF and Chrome. */
 	font-size: 16px;
 	line-height: 1;
-	padding: 18px 9px 17px;
+	padding: 18px 19px 17px;
 	
 }
 
