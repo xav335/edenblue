@@ -430,13 +430,7 @@ body {
 								href="realisations-en-cours/index.html">Réalisations en
 									cours</a></li>
 						</ul></li>
-					<li id="menu-item-302"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302"><a
-						href="eden-blue-cezac-construction-piscine-a-debordement-piscine-naturelle-couloir-de-nage-piscine-beton-4/index.html">Mag</a></li>
-					<li id="menu-item-139"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139"><a
-						href="piscine-beton-bordeaux-gironde-dordogne-cezac-eden-blue-couloir-de-nage-4/index.html">Offre
-							commerciale</a></li>
+					
 					 <li id="menu-item-452"
 						class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-452"><a
 						href="/actu.php">Actus</a>
