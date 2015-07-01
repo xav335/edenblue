@@ -171,8 +171,7 @@ class Contact extends StorageManager
 
     public function contactAdd($value)
     {
-        // print_r($value);
-        // exit();
+        //print_r($value);exit();
         $this->dbConnect();
         $this->begin();
         try {
@@ -330,6 +329,50 @@ class Contact extends StorageManager
         $this->dbDisConnect();
     }
 
+    public function contactImportCSVslow($value)
+    {
+         print_r($value);
+         ini_set("auto_detect_line_endings", true); //uniquement en cas de fichiers Mac ...
+        // 
+        
+         try {
+             $this->dbConnect();
+             $this->begin();
+             
+             $this->contactDeleteALL();
+             
+             $this->commit();
+             $this->dbDisConnect();
+         } catch (Exception $e) {
+             $this->rollback();
+             throw new Exception("Erreur Mysql contactImportCSVslow" . $e->getMessage());
+             return "errrrrrrooooOOor";
+         }
+
+         try {
+            
+             
+             if (($handle = fopen($value, "r")) !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                    $csvLine = null;
+                    $csvLine['firstname']=$data[0];
+                    $csvLine['name']=$data[1];
+                    $csvLine['email']=$data[2];
+                    if ($data[3]==1) {
+                         $csvLine['newsletter']='on';
+                    }
+                    $this->contactAdd($csvLine);
+                }
+                fclose($handle);
+            }
+        } catch (Exception $e) {
+            $this->rollback();
+            throw new Exception("Erreur Mysql contactImportCSVslow" . $e->getMessage());
+            return "errrrrrrooooOOor";
+        }
+        
+    }
+    
     public function contactImportCSV($value)
     {
         // print_r($value);

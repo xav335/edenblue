@@ -15,7 +15,7 @@ if (!empty($_GET)) { // GET GET GET
 		$url = $_SERVER["DOCUMENT_ROOT"] ."/admin/FileUpload/server/php/files/".$url;
 		//echo $url;
 		try {
-			$result = $contact->contactImportCSV($url);
+			$result = $contact->contactImportCSVslow($url);
 			$contact = null;
 			header('Location: /admin/contact-list.php');
 		} catch (Exception $e) {

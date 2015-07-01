@@ -73,7 +73,7 @@ if (!empty($_POST)){
 			if ($_POST['postaction'] == 'envoi' ) {
 				header('Location: /admin/newsletter-corecontent.php?action=envoi&postaction=envoi&id='. $_POST['id']);
 			} else {
-				header('Location: /admin/newsletter-corecontent.php?action=envoi&postaction=preview&id='. $_POST['id']);
+				header('Location: /admin/newsletter-corecontent.php?action=envoi&postaction=preview&id='. $_POST['id'] .'&emailCusto='. $_POST['emailCusto']);
 			}
 				
 		} else {  //ajouter

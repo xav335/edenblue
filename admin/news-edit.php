@@ -44,7 +44,7 @@ if (!empty($_GET)){ //Modif
 	$contenu= 		null;
 	$online = 		null;
 	for ($i=1;$i<2;$i++) {
-		$img[$i]  = '/img/favicon.png';
+		$img[$i]  = 'img/favicon.png';
 		$imgval[$i]  = '';
 	}
 }

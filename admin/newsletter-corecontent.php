@@ -123,6 +123,7 @@ if (!empty($_GET['postaction']) && $_GET['postaction']=='preview') {
 	echo "<br><br><h3>Newsletter de Test envoyee !!!! </h3><br><br>
 		<a href='javascript:history.back()'>retour</a>";
 	
+	$sujet = "$mailNameCustomer - Newsletter - Test ";
 	//$_to = "fjavi.gonzalez@gmail.com";
 	$_to = $mailContact;
 	$entete .= "Bcc: ". $mailBcc ."\n";
@@ -132,11 +133,17 @@ if (!empty($_GET['postaction']) && $_GET['postaction']=='preview') {
 	////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!////////////
 	//mail($_to, $sujet, stripslashes($corps), $entete);
 	///////////////////////////////////////////////////////////
+	$regex = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
+	if (preg_match( $regex, $_GET['emailCusto'])) {
+	    sendElasticEmail($_GET['emailCusto'], $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
+	} else {
+	    echo "<br><br><br>Votre email (".$_GET['emailCusto'].")est non conforme !!";
+	}
 	////////////////ELASTIC MAIL ICONEO!!!!!!!!!!////////////
 	sendElasticEmail($_to, $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
-	sendElasticEmail("fjavi.gonzalez@gmail.com", $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
-	sendElasticEmail("xav335@hotmail.com", $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
-	sendElasticEmail("jav_gonz@yahoo.com", $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
+	//sendElasticEmail("fjavi.gonzalez@gmail.com", $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
+	//sendElasticEmail("xav335@hotmail.com", $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
+	//sendElasticEmail("jav_gonz@yahoo.com", $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
 	///////////////////////////////////////////////////////////
 	
 } elseif (!empty($_GET['postaction']) && $_GET['postaction']=='envoi') { 
@@ -158,7 +165,7 @@ if (!empty($_GET['postaction']) && $_GET['postaction']=='preview') {
 				//mail($_to, $sujet, stripslashes($corpsCode), $entete);
 				///////////////////////////////////////////////////////////
 				////////////////ELASTIC MAIL ICONEO!!!!!!!!!!////////////
-				sendElasticEmail($_to, $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
+				//sendElasticEmail($_to, $sujet, "", stripslashes($corpsCode), $mailCustomer, $mailNameCustomer);
 				///////////////////////////////////////////////////////////
 				error_log(date("Y-m-d H:i:s") ." envoi : OK : ". $value['email'] ."\n", 3, "newsletterspy.log");
 				//echo "envoi OK : ". $value['email'] ."<br>";

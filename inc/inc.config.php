@@ -1,15 +1,16 @@
 <?php
-/**
+/*
 define("DBHOST", "edenbluesy1.mysql.db");
 define("DBNAME", "edenbluesy1");
-define("DBUSER", "Edenblue33");
-define("DBPASSWD", "edenbluesy1");
+define("DBUSER", "edenbluesy1");
+define("DBPASSWD", "Edenblue33");
 */
 
 define("DBHOST", "localhost");
 define("DBNAME", "edenblue");
 define("DBUSER", "edenblue");
 define("DBPASSWD", "edenblue33");
+
 
 // CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES
 $tva = 0.2;
