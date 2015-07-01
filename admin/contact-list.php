@@ -105,7 +105,7 @@ require 'classes/Contact.php';
 									<div style="display: none;" class="supp<?php echo $value['id']?> alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close"  aria-label="Close" onclick="$('.supp<?php echo $value['id']?>').css('display', 'none');"><span aria-hidden="true">×</span></button>
 								      <strong>Voulez vous vraiment supprimer ?</strong>
-								      <button type="button" class="btn btn-danger" onclick="location.href='formprocess.php?reference=contact&action=delete&id=<?php echo $value['id'] ?>'">Oui !</button>
+								      <button type="button" class="btn btn-danger" onclick="location.href='contact-fp.php?reference=contact&action=delete&id=<?php echo $value['id'] ?>'">Oui !</button>
 								 	</div>
 								<img src="img/del.png" width="20" alt="Supprimer" onclick="$('.supp<?php echo $value['id']?>').css('display', 'block');"> </td>
 							</tr>

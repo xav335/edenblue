@@ -154,7 +154,7 @@ class Contact extends StorageManager
     {
         $this->dbConnect();
         try {
-            $sql = "SELECT DISTINCT email FROM contact WHERE newsletter=1;";
+            $sql = "SELECT DISTINCT email FROM contact WHERE newsletter=1 AND email NOT IN (SELECT email FROM contact WHERE newsletter=0);";
             // print_r($sql);exit();
             $new_array = null;
             $result = mysqli_query($this->mysqli, $sql);
@@ -295,7 +295,7 @@ class Contact extends StorageManager
         $this->dbConnect();
         $this->begin();
         try {
-            $sql = "DELETE FROM  .`contact` WHERE `id`=" . $value . ";";
+            $sql = "DELETE FROM contact WHERE id=" . $value . ";";
             $result = mysqli_query($this->mysqli, $sql);
             
             if (! $result) {
@@ -305,7 +305,7 @@ class Contact extends StorageManager
             $this->commit();
         } catch (Exception $e) {
             $this->rollback();
-            throw new Exception("Erreur Mysql " . $e->getMessage());
+            throw new Exception("Erreur Mysql contactDelete" . $e->getMessage());
             return "errrrrrrooooOOor";
         }
         
