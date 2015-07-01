@@ -41,6 +41,25 @@ class Contact extends StorageManager
         return $new_array;
     }
     
+    public function contactGetExport()
+    {
+        $this->dbConnect();
+        $sql = "SELECT firstname,name,email,newsletter FROM `contact` ORDER BY `name`;";
+        // print_r($sql);
+        $new_array = null;
+        $result = mysqli_query($this->mysqli, $sql);
+        if (! $result) {
+            throw new Exception('Erreur Mysql contactGet sql = : ' . $sql);
+        }
+        while (($row = mysqli_fetch_assoc($result)) != false) {
+            $new_array[] = $row;
+        }
+        // print_r($new_array);exit;
+    
+        $this->dbDisConnect();
+        return $new_array;
+    }
+    
     public function contactGetByEmail($email)
     {
         $this->dbConnect();
@@ -293,6 +312,24 @@ class Contact extends StorageManager
         $this->dbDisConnect();
     }
 
+    public function contactExportCSVslow()
+    {
+        try {
+            $date = date("Ymd-H:i:s");
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/admin/FileUpload/server/php/files/export-" . $date . ".csv";
+            $listeContacts = $this->contactGetExport();
+            
+            $out = fopen($path, 'w');
+            foreach ($listeContacts as $value) {
+                fputcsv($out, $value,";");
+            }
+            fclose($out);
+        } catch (Exception $e) {
+            throw new Exception("Erreur contactExportCSVslow " . $e->getMessage());
+            return "errrrrrrooooOOor";
+        }
+    }
+    
     public function contactExportCSV()
     {
         // print_r($value);
